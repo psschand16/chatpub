@@ -87,8 +87,8 @@ rvm autolibs disable
 rvm install "ruby-3.0.2"
 rvm use 3.0.2 --default
 
-git clone https://github.com/chatwoot/chatwoot.git
-cd chatwoot
+git clone --single-branch --branch master https://github.com/psschand16/chatpub.git
+cd chatpub
 if [[ -z "$1" ]]; then
 git checkout master;
 else
@@ -118,9 +118,9 @@ RAILS_ENV=production bundle exec rake db:reset
 EOF
 fi
 
-cp /home/chatwoot/chatwoot/deployment/chatwoot-web.1.service /etc/systemd/system/chatwoot-web.1.service
-cp /home/chatwoot/chatwoot/deployment/chatwoot-worker.1.service /etc/systemd/system/chatwoot-worker.1.service
-cp /home/chatwoot/chatwoot/deployment/chatwoot.target /etc/systemd/system/chatwoot.target
+cp /home/chatwoot/chatpub/deployment/chatwoot-web.1.service /etc/systemd/system/chatwoot-web.1.service
+cp /home/chatwoot/chatpub/deployment/chatwoot-worker.1.service /etc/systemd/system/chatwoot-worker.1.service
+cp /home/chatwoot/chatpub/deployment/chatwoot.target /etc/systemd/system/chatwoot.target
 
 systemctl enable chatwoot.target
 systemctl start chatwoot.target
